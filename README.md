@@ -10,15 +10,32 @@ Originally created as a demo for the talk [»Have you met ada? - Word Embeddings
 this package is
 functional yet designed to encourage further development and contributions.
 
+**Please note that this package is still in development and may not be suitable for production use.**
+
 ## Installation
 
-Install via composer:
+At the moment, the installation process depends on the `"minimum-stability"` setting in your `composer.json`. If you have
+`"minimum-stability": "dev"`, you can install the package directly:
 
 ```bash
 composer require fiveam-code/ada-laravel
 ```
 
-Ensure that your database is configured to use PostgreSQL with the vector extension.
+Otherwise, you need to add the package with a temporary dev dependency to your `composer.json`:
+
+```json
+{
+    "require": {
+        "fiveam-code/ada-laravel": "^0.1.0",
+        "rajentrivedi/tokenizer-x": "dev-upgrade-laravel-11 as 1.0.0"
+    }
+}
+```
+
+Then you can run `composer update` to install the package.
+
+Ensure that your database is configured to use PostgreSQL with the vector extension. The package will enable the extension
+via a migration if it is not already enabled.
 
 Publish the migrations and run them:
 
@@ -97,10 +114,8 @@ The lookup method allows for direct querying of your model's stored knowledge, f
 retrieves the most contextually relevant information using vector similarity.
 
 ```php
-use App\Models\Paper;
 use Ada\Models\Embedding;
 
-$paper = Paper::first();
 $answer = Embedding::lookup("Where does the PHP elephant live?");
 
 // "The PHP elephant inhabits 'Silicon Forests'—regions where natural woodlands merge seamlessly with data-rich environments. These forests are dense with both foliage and floating data points."
@@ -131,7 +146,6 @@ If you want to further customize the prompt, you can pass an object form a class
 to the `lookup` method:
 
 ```php
-use App\Models\Paper;
 use Ada\Models\Embedding;
 use Ada\Tools\Prompts\OpenAIPrompt;
 
