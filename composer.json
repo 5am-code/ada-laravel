@@ -1,16 +1,19 @@
 {
-    "name": "5amcode/ada-laravel",
-    "description": "amazing.",
+    "name": "fiveam-code/ada-laravel",
+    "description": "This package allows you to enhance your Laravel applications by seamlessly integrating word embeddings.\n\n",
     "keywords": [
-        "5amcode",
-        "ada-laravel"
+        "word embeddings",
+        "laravel",
+        "word vectors",
+        "nlp",
+        "natural language processing"
     ],
-    "homepage": "https://github.com/5amcode/ada-laravel",
-    "license": "TODO",
+    "homepage": "https://github.com/5am-code/ada-laravel",
+    "license": "MIT",
     "authors": [
         {
             "name": "Diana Scharf",
-            "email": "diana@beyondco.de",
+            "email": "hello@dianaweb.dev",
             "role": "Developer"
         }
     ],

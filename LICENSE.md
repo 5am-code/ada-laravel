@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) Diana Scharf <diana@beyondco.de>
+Copyright (c) Diana Scharf <hello@dianaweb.dev>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

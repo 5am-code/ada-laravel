@@ -17,7 +17,6 @@ abstract class Response
 
     public bool $success;
 
-    // TODO: getters and setters
 
     abstract public function getContent(): string;
 }

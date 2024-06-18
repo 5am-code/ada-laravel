@@ -15,7 +15,7 @@ functional yet designed to encourage further development and contributions.
 Install via composer:
 
 ```bash
-composer require TODO/ada-laravel
+composer require fiveam-code/ada-laravel
 ```
 
 Ensure that your database is configured to use PostgreSQL with the vector extension.
