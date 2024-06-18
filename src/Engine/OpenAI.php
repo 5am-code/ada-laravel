@@ -40,8 +40,8 @@ class OpenAI extends Engine
     {
         try {
             $result = $this->client->chat()->create([
-                'model' => $model,
-                'messages' => $prompt->toArray(),
+                'model'       => $model,
+                'messages'    => $prompt->toArray(),
                 'temperature' => $temperature,
                 ...$options,
             ]);
