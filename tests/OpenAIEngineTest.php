@@ -27,10 +27,9 @@ it('creates an EmbeddedResponse from a Open AI JSON embedding response', functio
         ->and($response->getContent())->toBe(json_encode([-0.025455512, 0.004357308, -0.023832073]))
         ->and($response->tokenUsage)->toBe([
             'prompt_tokens' => 41,
-            'total_tokens' => 41,
+            'total_tokens'  => 41,
         ]);
 });
-
 
 it('creates an GeneratedResponse from a Open AI JSON chat response', function () {
     $response = json_decode(file_get_contents('tests/fixtures/openai_200_query.json'), true);
@@ -46,14 +45,13 @@ it('creates an GeneratedResponse from a Open AI JSON chat response', function ()
         ->and($response->model)->toBe('gpt-3.5-turbo-0125')
         ->and($response->getContent())->toStartWith("The habitat of the PHP Elephant is referred to as 'Silicon Forests'.")
         ->and($response->tokenUsage)->toBe([
-            'prompt_tokens' => 13,
+            'prompt_tokens'     => 13,
             'completion_tokens' => 9,
-            'total_tokens' => 22,
+            'total_tokens'      => 22,
         ]);
 });
 
 it('creates an ErrorResponse from a failed Open AI request', function () {
-
     $exceptionContent = json_decode(file_get_contents('tests/fixtures/openai_failed.json'), true);
     $exception = new \OpenAI\Exceptions\ErrorException($exceptionContent, 500);
 
@@ -63,6 +61,4 @@ it('creates an ErrorResponse from a failed Open AI request', function () {
         ->and($response->engine)->toBe(\Ada\Engine\OpenAI::class)
         ->and($response->success)->toBeFalse()
         ->and($response->getContent())->toStartWith('Error: Incorrect API key provided: abc.');
-
-
 });

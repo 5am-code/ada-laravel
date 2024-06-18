@@ -43,7 +43,7 @@ class AdaServiceProvider extends ServiceProvider
         ], 'ada-views');
 
         $this->app->singleton('ada', function () {
-            return new Ada;
+            return new Ada();
         });
 
         $this->validateIndexClass();
@@ -62,7 +62,7 @@ class AdaServiceProvider extends ServiceProvider
         $indexClass = config('ada.index_class', \Ada\Index\DefaultIndex::class);
         $reflection = new \ReflectionClass($indexClass);
 
-        if (! $reflection->isSubclassOf(Index::class)) {
+        if (!$reflection->isSubclassOf(Index::class)) {
             throw new Exception("Index class has to implement \Ada\Index\Index.");
         }
     }
