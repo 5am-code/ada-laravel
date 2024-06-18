@@ -30,6 +30,8 @@ class AdaServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/ada.php', 'ada');
+
         $this->publishes([
             __DIR__.'/../config/ada.php' => config_path('ada.php'),
         ], 'ada-config');
