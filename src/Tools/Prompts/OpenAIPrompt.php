@@ -8,11 +8,11 @@ class OpenAIPrompt extends Prompt
     {
         return [
             [
-                'role' => 'system',
+                'role'    => 'system',
                 'content' => $this->template,
             ],
             [
-                'role' => 'user',
+                'role'    => 'user',
                 'content' => $this->query,
             ],
         ];
