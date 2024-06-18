@@ -1,0 +1,81 @@
+{
+    "name": "5amcode/ada-laravel",
+    "description": "amazing.",
+    "keywords": [
+        "5amcode",
+        "ada-laravel"
+    ],
+    "homepage": "https://github.com/5amcode/ada-laravel",
+    "license": "TODO",
+    "authors": [
+        {
+            "name": "Diana Scharf",
+            "email": "diana@beyondco.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/contracts": "^10.0|^11.0",
+        "openai-php/client": "^0.8.4",
+        "pgvector/pgvector": "^0.1.4",
+        "rajentrivedi/tokenizer-x": "dev-upgrade-laravel-11",
+        "symfony/http-client": "^7.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.15",
+        "orchestra/testbench": "^9.0",
+        "pestphp/pest": "^2.20",
+        "pestphp/pest-plugin-laravel": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ada\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ada\\Tests\\": "tests",
+            "Ada\\Tests\\Doubles\\": "tests/Doubles/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "lint": [
+            "@php vendor/bin/phpstan analyse"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ada\\AdaServiceProvider"
+            ],
+            "aliases": {
+                "Ada": "Ada\\Facades\\Ada"
+            }
+        }
+    }
+}
