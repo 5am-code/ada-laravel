@@ -17,6 +17,5 @@ abstract class Response
 
     public bool $success;
 
-
     abstract public function getContent(): string;
 }
