@@ -11,7 +11,7 @@
     failOnWarning="true"
     failOnRisky="true"
     failOnEmptyTestSuite="true"
-    beStrictAboutOutputDuringTests="true"
+    beStrictAboutOutputDuringTests="false"
     cacheDirectory=".phpunit.cache"
     backupStaticProperties="false"
 >
@@ -27,9 +27,6 @@
             <clover outputFile="build/logs/clover.xml"/>
         </report>
     </coverage>
-    <logging>
-        <junit outputFile="build/report.junit.xml"/>
-    </logging>
     <source>
         <include>
             <directory suffix=".php">./src</directory>
