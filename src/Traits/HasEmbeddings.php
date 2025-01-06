@@ -3,6 +3,7 @@
 namespace Ada\Traits;
 
 use Ada\Index\Index;
+use Ada\Jobs\EmbedJob;
 use Ada\Models\Embedding;
 
 trait HasEmbeddings
@@ -20,16 +21,14 @@ trait HasEmbeddings
         /**
          * @var Embedding $embedding
          */
-        // TODO: Yes, that would be better in a queueable job!
         foreach ($embeddings as $embedding) {
             $embedding->key = $key;
             $embedding->embeddable_type = static::class;
             $embedding->embeddable_id = $this->id;
 
-            $embeddingVector = $index->embed($embedding->content);
-            $embedding->embedding = $embeddingVector->embeddings;
-
             $embedding->save();
+
+            dispatch(new EmbedJob($embedding));
         }
 
         return true;
