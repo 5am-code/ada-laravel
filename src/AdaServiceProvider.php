@@ -16,11 +16,11 @@ class AdaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views/prompts', 'ada');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/prompts', 'ada');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/ada.php' => config_path('ada.php'),
+                __DIR__ . '/../config/ada.php' => config_path('ada.php'),
             ], 'ada-config');
         }
     }
@@ -30,20 +30,20 @@ class AdaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/ada.php', 'ada');
+        $this->mergeConfigFrom(__DIR__ . '/../config/ada.php', 'ada');
 
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->publishes([
-            __DIR__.'/../config/ada.php' => config_path('ada.php'),
+            __DIR__ . '/../config/ada.php' => config_path('ada.php'),
         ], 'ada-config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
+            __DIR__ . '/../database/migrations' => database_path('migrations'),
         ], 'ada-migrations');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/ada'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/ada'),
         ], 'ada-views');
 
         $this->app->singleton('ada', function () {
