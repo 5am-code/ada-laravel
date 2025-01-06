@@ -15,30 +15,14 @@ functional yet designed to encourage further development and contributions.
 
 ## Installation
 
-At the moment, the installation process depends on the `"minimum-stability"` setting in your `composer.json`. If you have
-`"minimum-stability": "dev"`, you can install the package directly:
-
 ```bash
 composer require fiveam-code/ada-laravel
 ```
 
-Otherwise, you need to add the package with a temporary dev dependency to your `composer.json`:
-
-```json
-{
-    "require": {
-        "fiveam-code/ada-laravel": "^0.1.0",
-        "rajentrivedi/tokenizer-x": "dev-upgrade-laravel-11 as 1.0.0"
-    }
-}
-```
-
-Then you can run `composer update` to install the package.
-
 Ensure that your database is configured to use PostgreSQL with the vector extension. The package will enable the extension
 via a migration if it is not already enabled.
 
-Publish the migrations and run them:
+You can publish the migrations (optional) and run them:
 
 ```bash
 php artisan vendor:publish --provider="Ada\AdaServiceProvider" --tag="ada-migrations"
