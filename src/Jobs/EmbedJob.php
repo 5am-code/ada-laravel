@@ -11,7 +11,9 @@ class EmbedJob implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public Embedding $embedding) {}
+    public function __construct(public Embedding $embedding)
+    {
+    }
 
     public function handle(): void
     {
