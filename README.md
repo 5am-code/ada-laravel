@@ -10,7 +10,8 @@ Originally created as a demo for the talk [»Have you met ada? - Word Embeddings
 this package is
 functional yet designed to encourage further development and contributions.
 
-**Please note that this package is still in development and may not be suitable for production use.**
+> [!WARNING]
+> Please note that this package is still in development and may not be suitable for production use.
 
 ## Installation
 
