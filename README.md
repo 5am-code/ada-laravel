@@ -1,5 +1,8 @@
 # ada-laravel
 
+![Packagist Version](https://img.shields.io/packagist/v/fiveam-code/ada-laravel?include_prereleases&style=for-the-badge)
+
+
 The package `ada-laravel` allows you to enhance your Laravel applications by seamlessly integrating text embeddings and
 querying capabilities for your models. Utilizing OpenAI by default, it enables your models to generate and query
 embeddings using
