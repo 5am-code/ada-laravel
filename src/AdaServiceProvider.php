@@ -32,6 +32,8 @@ class AdaServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/ada.php', 'ada');
 
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
+
         $this->publishes([
             __DIR__.'/../config/ada.php' => config_path('ada.php'),
         ], 'ada-config');
