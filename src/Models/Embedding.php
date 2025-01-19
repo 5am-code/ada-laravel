@@ -41,7 +41,7 @@ class Embedding extends Model
         $queryEmbedding = $index->embed($query);
 
         if ($queryEmbedding instanceof ErrorResponse) {
-            return 'Error: '.$queryEmbedding->getMessage();
+            return 'Error: ' . $queryEmbedding->getContent();
         }
 
         $vector = new Vector($queryEmbedding->embeddings);
@@ -49,7 +49,7 @@ class Embedding extends Model
         $nearestNeighbor = self::getNearestNeighbor($vector, $additionalConstraints);
 
         $context = $nearestNeighbor->content ?? 'No context given.';
-
+        dump($context);
         if ($contextPrompt === null) {
             $contextPrompt = $index->engine->getDefaultPrompt();
         }
