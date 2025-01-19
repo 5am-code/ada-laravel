@@ -41,7 +41,7 @@ class Embedding extends Model
         $queryEmbedding = $index->embed($query);
 
         if ($queryEmbedding instanceof ErrorResponse) {
-            return 'Error: ' . $queryEmbedding->getContent();
+            return 'Error: '.$queryEmbedding->getContent();
         }
 
         $vector = new Vector($queryEmbedding->embeddings);
