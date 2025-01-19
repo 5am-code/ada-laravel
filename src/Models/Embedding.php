@@ -49,7 +49,7 @@ class Embedding extends Model
         $nearestNeighbor = self::getNearestNeighbor($vector, $additionalConstraints);
 
         $context = $nearestNeighbor->content ?? 'No context given.';
-        dump($context);
+
         if ($contextPrompt === null) {
             $contextPrompt = $index->engine->getDefaultPrompt();
         }
