@@ -8,7 +8,6 @@ use Ada\Index\Index;
 use Ada\Tools\Prompts\Prompt;
 use Closure;
 use Illuminate\Database\Eloquent\Model;
-use Pgvector\Laravel\Distance;
 use Pgvector\Laravel\HasNeighbors;
 use Pgvector\Laravel\Vector;
 
@@ -70,6 +69,8 @@ class Embedding extends Model
      */
     public static function getNearestNeighbor(Vector $vector, ?Closure $additionalConstraints = null): ?Embedding
     {
+        $index = app()->make(Index::class);
+
         $query = Embedding::query();
 
         if ($additionalConstraints !== null) {
@@ -77,7 +78,7 @@ class Embedding extends Model
         }
 
         try {
-            return $query->nearestNeighbors('embedding', $vector->toArray(), Distance::Cosine)
+            return $query->nearestNeighbors('embedding', $vector->toArray(), $index->getDistance()->getValue())
                 ->get()
                 ->first();
         } catch (\Throwable $e) {
