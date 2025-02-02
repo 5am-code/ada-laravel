@@ -8,7 +8,6 @@ use Ada\Index\Index;
 use Ada\Tools\Prompts\Prompt;
 use Closure;
 use Illuminate\Database\Eloquent\Model;
-use Pgvector\Laravel\Distance;
 use Pgvector\Laravel\HasNeighbors;
 use Pgvector\Laravel\Vector;
 
@@ -28,8 +27,8 @@ class Embedding extends Model
     }
 
     /**
-     * @param string $query The query to lookup.
-     * @param Prompt|null $contextPrompt The prompt to use for the context, in case a custom template is necessary.
+     * @param string       $query                 The query to lookup.
+     * @param Prompt|null  $contextPrompt         The prompt to use for the context, in case a custom template is necessary.
      * @param Closure|null $additionalConstraints Limit the lookup by providing a query.
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
@@ -41,7 +40,7 @@ class Embedding extends Model
         $queryEmbedding = $index->embed($query);
 
         if ($queryEmbedding instanceof ErrorResponse) {
-            return 'Error: ' . $queryEmbedding->getContent();
+            return 'Error: '.$queryEmbedding->getContent();
         }
 
         $vector = new Vector($queryEmbedding->embeddings);
@@ -65,7 +64,7 @@ class Embedding extends Model
     }
 
     /**
-     * @param Vector $vector The vector to compare to
+     * @param Vector       $vector                The vector to compare to
      * @param Closure|null $additionalConstraints Limit the search further by providing a query.
      */
     public static function getNearestNeighbor(Vector $vector, ?Closure $additionalConstraints = null): ?Embedding
