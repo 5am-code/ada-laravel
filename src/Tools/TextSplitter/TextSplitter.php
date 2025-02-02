@@ -5,6 +5,9 @@ namespace Ada\Tools\TextSplitter;
 use Exception;
 use InvalidArgumentException;
 
+/**
+ * Interface class for engine-specific text splitters.
+ */
 abstract class TextSplitter
 {
     protected $tokenizer;
