@@ -6,6 +6,8 @@ use Ada\Engine\Responses\EmbeddedResponse;
 use Ada\Engine\Responses\ErrorResponse;
 use Ada\Engine\Responses\GeneratedResponse;
 use Ada\Models\Embedding;
+use Ada\Tools\Distance\Distance;
+use Ada\Tools\Distance\OpenAIDistance;
 use Ada\Tools\Prompts\Prompt;
 use Ada\Tools\TextSplitter\AdaTextSplitter;
 use Ada\Tools\TextSplitter\TextSplitter;
@@ -45,5 +47,10 @@ class DefaultIndex extends Index
     protected function getDefaultSplitter(): TextSplitter
     {
         return new AdaTextSplitter();
+    }
+
+    public function getDistance(): Distance
+    {
+        return new OpenAIDistance();
     }
 }
