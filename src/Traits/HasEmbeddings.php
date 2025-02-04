@@ -24,7 +24,7 @@ trait HasEmbeddings
         foreach ($embeddings as $embedding) {
             $embedding->key = $key;
             $embedding->embeddable_type = static::class;
-            $embedding->embeddable_id = $this->id;
+            $embedding->embeddable_id = $this->getKey();
 
             $embedding->save();
 
