@@ -6,6 +6,9 @@ use Ada\Index\Index;
 use Ada\Jobs\EmbedJob;
 use Ada\Models\Embedding;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ */
 trait HasEmbeddings
 {
     public function embed(string $key, string $content): bool
