@@ -1,4 +1,4 @@
-    <?php
+<?php
 
     return [
         'client_token' => env('ADA_CLIENT_TOKEN'),
